@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using Models;
 using Services;
 using SkillBridge.Message;
+using System;
+
 public class UICharacterSelect : MonoBehaviour {
 
     public GameObject panelCreate;
@@ -37,6 +39,49 @@ public class UICharacterSelect : MonoBehaviour {
         UserService.Instance.OnCharacterCreate = OnCharacterCreate;
     }
 
+    //public void InitCharacterSelect1(bool init)
+    //{
+    //    panelCreate.SetActive(false);
+    //    panelSelect.SetActive(true);
+    //    if (init)
+    //    {
+    //        foreach (var old in uiChars)
+    //        {
+    //            Destroy(old);
+    //        }
+    //        uiChars.Clear();
+    //        for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
+    //        {
+    //            GameObject go = Instantiate(uiCharInfo, this.uiCharList);
+    //            UICharInfo chrInfo = go.GetComponent<UICharInfo>();
+    //            chrInfo.info = User.Instance.Info.Player.Characters[i];
+
+    //            Button button = go.GetComponent<Button>();
+    //            int idx = i;
+    //            button.onClick.AddListener(() =>
+    //            {
+    //                OnCharacterCreate1(idx);
+    //            });
+    //            uiChars.Add(go);
+    //            go.SetActive(true);
+    //        }
+    //    }
+    //}
+
+    //    private void OnCharacterCreate1(int idx)
+    //    {
+    //        this.selectCharacterIdx = idx;
+    //        var cha = User.Instance.Info.Player.Characters[idx];
+    //    Debug.LogFormat("Select Char{0},{1},{2}",cha.Id,cha.Name,cha.Class);
+    //    User.Instance.CurrentCharacter = cha;
+    //    characterView.CurrectCharacter = idx;
+    //    for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
+    //    {
+    //        UICharInfo ci = uiChars[i].GetComponent<UICharInfo>();
+    //        ci.Selected = idx ==i;
+    //    }
+
+    //    }
 
     public void InitCharacterSelect(bool init)
     {
@@ -82,6 +127,16 @@ public class UICharacterSelect : MonoBehaviour {
 		
 	}
 
+    //public void OnClickCreate1()
+    //{
+    //    if (string.IsNullOrEmpty(this.charName.text))
+    //    {
+    //        MessageBox.Show("请输入角色名称");
+    //        return;
+    //    }
+
+    //    UserService.Instance.SendCharacterCreate1(this.charName.text, this.charClass);
+    //}
     public void OnClickCreate()
     {
         if (string.IsNullOrEmpty(this.charName.text))

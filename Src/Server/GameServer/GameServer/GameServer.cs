@@ -8,7 +8,8 @@ using System.Net.Sockets;
 using System.Configuration;
 
 using System.Threading;
-
+using GameServer.Managers;
+using GameServer.Models;
 using Network;
 using GameServer.Services;
 
@@ -27,6 +28,8 @@ namespace GameServer
             network.Init(Port);
             DBService.Instance.Init();
             UserService.Instance.Init();
+            DataManager.Instance.Load();
+            MapManager.Instance.Init();
             thread = new Thread(new ThreadStart(this.Update));
 
             return true;

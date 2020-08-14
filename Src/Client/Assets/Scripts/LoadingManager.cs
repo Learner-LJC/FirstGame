@@ -44,7 +44,7 @@ public class LoadingManager : MonoBehaviour {
         // Fake Loading Simulate
         for (float i = 50; i < 100;)
         {
-            i += Random.Range(0.1f, 1.5f);
+            i += Random.Range(0.21f, 1.5f);
             progressBar.value = i;
             yield return new WaitForEndOfFrame();
         }

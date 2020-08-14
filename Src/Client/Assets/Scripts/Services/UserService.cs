@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Common;
+using Models;
 using Network;
 using UnityEngine;
 
 using SkillBridge.Message;
+using Object = System.Object;
 
 namespace Services
 {
@@ -169,6 +171,33 @@ namespace Services
             }
         }
 
+        //public void SendRegister1(string user, string psw)
+        //{
+        //    Debug.LogFormat("UserRegisterRequest::user:{0} psw{1}",user,psw);
+        //    NetMessage message=new NetMessage();
+        //    message.Request=new NetMessageRequest();
+        //    message.Request.userRegister=new UserRegisterRequest();
+        //    message.Request.userRegister.User = user;
+        //    message.Request.userRegister.Passward = psw;
+        //    if (connected&&NetClient.Instance.Connected)
+        //    {
+        //        this.pendingMessage = null;
+        //        NetClient.Instance.SendMessage(message);
+        //    }
+        //    else
+        //    {
+        //        this.pendingMessage = message;
+        //        this.ConnectToServer();
+        //    }
+        //}
+        //void OnUserRegister1(Object sender,UserCreateCharacterResponse response)
+        //{
+        //    Debug.LogFormat("OnUserRegister:{0}[{1}]",response.Result,response.Errormsg);
+        //    if (this.OnRegister!=null)
+        //    {
+        //        this.OnRegister(response.Result, response.Errormsg);
+        //    }
+        //}
         void OnUserRegister(object sender, UserRegisterResponse response)
         {
             Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Errormsg);
@@ -176,7 +205,6 @@ namespace Services
             if (this.OnRegister != null)
             {
                 this.OnRegister(response.Result, response.Errormsg);
-
             }
         }
 
@@ -201,6 +229,39 @@ namespace Services
             }
         }
 
+        //public void SendCharacterCreate1(string name, CharacterClass cls)
+        //{
+        //    Debug.LogFormat("UserCreateCharacterRequest::Name:{0} class:{1}",name,cls);
+        //    NetMessage message=new NetMessage();
+        //    message.Request=new NetMessageRequest();
+        //    message.Request.createChar=new UserCreateCharacterRequest();
+        //    message.Request.createChar.Name = name;
+        //    message.Request.createChar.Class = cls;
+        //    if (this.connected&&NetClient.Instance.Connected)
+        //    {
+        //        this.pendingMessage = null;
+        //        NetClient.Instance.SendMessage(message);
+        //    }
+        //    else
+        //    {
+        //        this.pendingMessage = message;
+        //        this.ConnectToServer();
+        //    }
+        //}
+        //void OnUserCreateCharacter1(object sender, UserCreateCharacterResponse respone)
+        //{
+        //    Debug.LogFormat("OnUserCreateCharacter:{0}[{1}]",respone.Result,respone.Errormsg);
+        //    if (respone.Result==Result.Success)
+        //    {
+        //        Models.User.Instance.Info.Player.Characters.Clear();
+        //        Models.User.Instance.Info.Player.Characters.AddRange(respone.Characters);
+        //    }
+
+        //    if (this.OnCharacterCreate!=null)
+        //    {
+        //        this.OnCharacterCreate(respone.Result, respone.Errormsg);
+        //    }
+        //}
         void OnUserCreateCharacter(object sender, UserCreateCharacterResponse response)
         {
             Debug.LogFormat("OnUserCreateCharacter:{0} [{1}]", response.Result, response.Errormsg);
